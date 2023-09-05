@@ -1,0 +1,37 @@
+import java.util.Scanner;
+
+public class RangoJava {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Pedir al usuario la cantidad de datos
+        System.out.print("Ingrese la cantidad de datos: ");
+        int cantidadDatos = scanner.nextInt();
+
+        // Inicializar variables para el valor máximo y mínimo
+        double maximo = Double.MIN_VALUE;
+        double minimo = Double.MAX_VALUE;
+
+        // Pedir al usuario ingresar los datos uno por uno y encontrar el máximo y mínimo
+        for (int i = 0; i < cantidadDatos; i++) {
+            System.out.print("Ingrese el dato #" + (i + 1) + ": ");
+            double dato = scanner.nextDouble();
+
+            // Actualizar el máximo y mínimo si es necesario
+            if (dato > maximo) {
+                maximo = dato;
+            }
+            if (dato < minimo) {
+                minimo = dato;
+            }
+        }
+
+        // Calcular y mostrar el rango
+        double rango = maximo - minimo;
+        System.out.println("El rango de los datos es: " + rango);
+
+        // Cerrar el scanner
+        scanner.close();
+    }
+}
+}

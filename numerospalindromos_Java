@@ -1,0 +1,42 @@
+import java.util.Scanner;
+
+public class NumeroPalindromo {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Solicitar al usuario que ingrese un número
+        System.out.print("Ingrese un número: ");
+        int numero = scanner.nextInt();
+
+        // Convierte el número a una cadena de caracteres
+        String numeroStr = String.valueOf(numero);
+
+        // Verificar si la cadena es un palíndromo
+        boolean esPalindromo = esPalindromo(numeroStr);
+
+        // Dar a ver el resultado
+        if (esPalindromo) {
+            System.out.println(numero + " Es un palíndromo.");
+        } else {
+            System.out.println(numero + " No es un palíndromo.");
+        }
+
+        // Cerrar el scanner
+        scanner.close();
+    }
+
+    // Método para verificar si una cadena es un palíndromo
+    public static boolean esPalindromo(String str) {
+        int izquierda = 0;
+        int derecha = str.length() - 1;
+
+        while (izquierda < derecha) {
+            if (str.charAt(izquierda) != str.charAt(derecha)) {
+                return false;
+            }
+            izquierda++;
+            derecha--;
+        }
+        return true;
+    }
+}
