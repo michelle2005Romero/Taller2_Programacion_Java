@@ -1,0 +1,47 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
+
+ public class MedianaCalculator  {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Double> numeros = new ArrayList<>();
+
+        System.out.println("Ingrese números ordenados (ingrese '.' para terminar):");
+
+        while (true) {
+            String entrada = scanner.nextLine();
+
+            if (entrada.equals(".")) {
+                break;
+            }
+
+            try {
+                double numero = Double.parseDouble(entrada);
+                numeros.add(numero);
+            } catch (NumberFormatException e) {
+                System.out.println("Entrada no válida. Ingrese un número o '.' para terminar.");
+            }
+        }
+
+        scanner.close();
+
+        int cantidadNumeros = numeros.size();
+
+        if (cantidadNumeros == 0) {
+            System.out.println("No se ingresaron números.");
+        } else if (cantidadNumeros % 2 == 1) { // Cantidad de números impar
+            int indiceMediana = cantidadNumeros / 2;
+            double mediana = numeros.get(indiceMediana);
+            System.out.println("La mediana es: " + mediana);
+        } else { // Cantidad de números par
+            int indiceMediana1 = (cantidadNumeros - 1) / 2;
+            int indiceMediana2 = cantidadNumeros / 2;
+            double numero1 = numeros.get(indiceMediana1);
+            double numero2 = numeros.get(indiceMediana2);
+            double mediana = (numero1 + numero2) / 2.0;
+            System.out.println("La mediana es: " + mediana);
+        }
+    }
+}
+}
